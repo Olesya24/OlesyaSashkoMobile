@@ -31,7 +31,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.appium>http://127.0.0.1:4723/wd/hub</ts.appium>
+                        <ts.appium>https://EPM-TSTF:370a203d-1db4-44f8-b5ff-c04b443ed798@mobilecloud.epam.com/wd/hub</ts.appium>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -46,24 +46,45 @@
         </plugins>
     </build>
 
+
+
     <profiles>
+
         <profile>
-            <id>native</id>
+            <id>cloudNativeAndroid</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/nativeTNG.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/cloudNativeAndroidTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>cloudNativeIos</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/cloudNativeIosTNG.xml</suite.file>
             </properties>
         </profile>
 
         <profile>
-            <id>web</id>
+            <id>cloudWebAndroid</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/webTNG.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/cloudWebAndroidTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>cloudWebIos</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/cloudWebIosTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
